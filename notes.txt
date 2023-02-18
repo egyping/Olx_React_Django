@@ -1,0 +1,70 @@
+cookie cutter 
+install docker 
+python -m venv home
+source home/bin/activate
+pip install django==3.2
+cookiecutter gh:cookiecutter/cookiecutter-django
+docker-compose -f olx/local.yml build
+docker-compose -f olx/local.yml run --rm django python manage.py migrate
+docker-compose -f olx/local.yml up
+
+http://0.0.0.0:8000/
+
+OLX Idea 
+    Model to represent the ad 
+    view to list the ads 
+    special slot for sponsored ad 
+    payment for featured ads
+
+Ad Model
+    docker-compose -f olx/local.yml run --rm django python manage.py startapp ads
+    move the ads folder to the olx folder 
+    change the apps.olx app name due to the folder place change 
+    config > settings > local : add the ads app to the local 
+    create the ad model and migrate
+    register the model in the admin file 
+    docker-compose -f olx/local.yml run --rm django python manage.py makemigrations
+
+Ad views and API
+    in Ad app create new api folder to have the views and serializers 
+    in your models imports mention the full path 
+        from olx.ads.models import Ad
+    test the ads api by http://0.0.0.0:8000/api/ads/
+Ad create view API 
+    simply import create api view and create the AdCreate class 
+    http://0.0.0.0:8000/api/create-ad/
+Ads Availability
+    Some ads should be avaialble and some not and we should filter out the none available
+    while listing .. add avaialble field at the model and modify the view api filter 
+    create UpdateView API too to update ad status 
+    everytime change the api router 
+    http://0.0.0.0:8000/api/ads/3/
+    change the availability and list to test 
+User <> Ad
+    we need to add the user to the Ads model (user - seller - seller_logo)
+    we need to add company too and its logo
+    views to filter the listing per user 
+    create normal Tajer user in the admin panel with name of Tajer and can login 
+
+Job detail and Delete
+    create destryo view 
+    http://0.0.0.0:8000/api/ads/3/delete/
+    create retrive view to get details of any ads 
+    http://0.0.0.0:8000/api/ads/4/
+
+Frontend
+    make sure that node and npm  is installed node -v
+    install the create react app package >> npm i -g create-react-app
+    create new frontend app using the package >> npx create-react-app frontend
+    it will take sometime and create new frontend folder 
+    move the frontend folder to the olx folder 
+    Delete things we dont need logo indexs.css app.css and their imports 
+    So basically the entry is the index.js which call App which inside App.js
+    cd to the frontend folder 
+    npm run start
+Axios and Requests // Axios
+    >> enable cors at settings >> base >> django-cors-headers >> add CORS_ALLOWED_ORIGINS
+    >> all DRF to accept calls to the views > adding permission classes to the views 
+    >> add AllowAny to the listing view 
+    install axios npm i axios
+    install react dom npm i react-router-dom
