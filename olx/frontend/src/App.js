@@ -1,43 +1,13 @@
 // Axios
-import axios from "axios"
-import React, { useEffect, useState } from "react";
+
+import React from "react";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Link
 } from "react-router-dom"
-
-
-function AdList() {
-  const [ads, setAds] = useState(null)
-
-  useEffect( () => {
-    function fetchAds() {
-      axios.get("http://0.0.0.0:8000/api/ads/")
-      .then( response => {
-          console.log(response.data)
-          setAds(response.data)
-      })}
-    fetchAds()
-  }, [])
-
-  return (
-    <div>
-      {ads && ads.map((ad, i) => {
-        return (
-          <div key={i}>
-          Ad #{ad.id}: {ad.title}
-          </div>
-        )
-      })}
-    </div>
-  );
-}
-
-
-
-
+import { AdList } from "./components/AdList";
 
 export default function App() {
   return (
@@ -57,8 +27,6 @@ export default function App() {
           </ul>
         </nav>
 
-        {/* A <Routes> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
         <Routes>
           <Route path="/about" element={<About/>} />
           <Route path="/users" element={<Users/>} />

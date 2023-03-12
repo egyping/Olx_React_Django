@@ -67,4 +67,7 @@ Axios and Requests // Axios
     >> all DRF to accept calls to the views > adding permission classes to the views 
     >> add AllowAny to the listing view 
     install axios npm i axios
+    react dom to browse the application 
     install react dom npm i react-router-dom
+    create api.js file has all the apis end points 
+
