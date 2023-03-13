@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios"
 import { API } from "../api";
+import { NavLink } from "react-router-dom";
 
 
 export function AdList() {
@@ -20,11 +21,13 @@ export function AdList() {
   
   
     return (
+      
       <div>
+        {!ads && <p>No available ads now!</p>}
         {ads && ads.map((ad, i) => {
           return (
             <div key={i}>
-            Ad #{ad.id}: {ad.title}
+            <NavLink to={`/ads/${ad.id}`}>{ad.title}</NavLink>
             </div>
           )
         })}

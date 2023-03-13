@@ -37,6 +37,7 @@ class AdDeleteView(DestroyAPIView):
 
 
 class AdDetailView(RetrieveAPIView):
+    permission_classes = [AllowAny]
     serializer_class = AdSerializer
 
     def get_queryset(self):

@@ -7,7 +7,9 @@ import {
   Route,
   Link
 } from "react-router-dom"
+import AdDetails from "./components/AdDetails";
 import { AdList } from "./components/AdList";
+
 
 export default function App() {
   return (
@@ -30,7 +32,8 @@ export default function App() {
         <Routes>
           <Route path="/about" element={<About/>} />
           <Route path="/users" element={<Users/>} />
-          <Route path="/" element={<AdList/>} />
+          <Route path="/ads/:id" element={<AdDetails/>}  />
+          <Route path="/" element={<AdList/>} exact />
         </Routes>
       </div>
     </Router>

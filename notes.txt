@@ -71,3 +71,6 @@ Axios and Requests // Axios
     install react dom npm i react-router-dom
     create api.js file has all the apis end points 
 
+job details with link
+    
+
