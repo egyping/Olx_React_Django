@@ -13,19 +13,20 @@ class Ad(models.Model):
     ]
 
     title = models.CharField(max_length=50)
-    description = models.TextField(max_length=500)
-    price = models.PositiveIntegerField()
+    description = models.TextField(max_length=500, blank=True, null=True)
+    price = models.PositiveIntegerField(blank=True, null=True)
     make = models.CharField(
         max_length=3,
         choices=make_choices,
         default=GERMAN,
+        blank=True, null=True
     )
     created = models.DateTimeField(auto_now_add=True)
 
-    available = models.BooleanField(default=True)
+    available = models.BooleanField(default=True, blank=True, null=True)
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="ads")
-    seller = models.CharField(max_length=50)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="ads", blank=True, null=True)
+    seller = models.CharField(max_length=50, blank=True, null=True)
     seller_logo = models.ImageField(blank=True, null=True)
     
 

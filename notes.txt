@@ -72,5 +72,8 @@ Axios and Requests // Axios
     create api.js file has all the apis end points 
 
 job details with link
-    
 
+job create 
+
+create the form using formik 
+npm install formik

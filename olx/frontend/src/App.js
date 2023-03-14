@@ -7,8 +7,10 @@ import {
   Route,
   Link
 } from "react-router-dom"
+import AdCreate from "./components/AdCreate";
 import AdDetails from "./components/AdDetails";
 import { AdList } from "./components/AdList";
+
 
 
 export default function App() {
@@ -19,6 +21,9 @@ export default function App() {
           <ul>
             <li>
               <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/create-ad">Create new Ad</Link>
             </li>
             <li>
               <Link to="/about">About</Link>
@@ -33,6 +38,7 @@ export default function App() {
           <Route path="/about" element={<About/>} />
           <Route path="/users" element={<Users/>} />
           <Route path="/ads/:id" element={<AdDetails/>}  />
+          <Route path="/create-ad" element={<AdCreate/>}  exact />
           <Route path="/" element={<AdList/>} exact />
         </Routes>
       </div>
