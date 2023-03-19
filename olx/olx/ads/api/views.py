@@ -12,8 +12,9 @@ class AdListView(ListAPIView):
         # return Ad.objects.all()
         return Ad.objects.filter(available=True)
 
+
 class AdCreateView(CreateAPIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
     serializer_class = AdSerializer
 
     # User <> Ad
@@ -24,6 +25,7 @@ class AdCreateView(CreateAPIView):
 
 
 class AdUpdateView(UpdateAPIView):
+    permission_classes = [AllowAny]
     serializer_class = AdSerializer
 
     def get_queryset(self):
@@ -32,6 +34,7 @@ class AdUpdateView(UpdateAPIView):
 
 class AdDeleteView(DestroyAPIView):
     # we don't need serializer as its just delete with no response 
+    permission_classes = [AllowAny]
     def get_queryset(self):
         return Ad.objects.all()
 
