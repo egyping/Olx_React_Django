@@ -21,6 +21,7 @@ export default function AdDetails() {
       .catch(error => {
         console.error(error);
       });
+      // [id] this it tells that useEffect only be called if the id is changed 
   }, [id]);
 
   if (!ad) {

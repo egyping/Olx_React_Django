@@ -21,7 +21,7 @@ app_name = "api"
 
 urlpatterns = [
     path("ads/", AdListView.as_view()),
-    path("create-ad/", AdCreateView.as_view()),
+    path("ads/create-ad/", AdCreateView.as_view()),
     path("ads/<pk>/update", AdUpdateView.as_view()),
     path("ads/<pk>/", AdDetailView.as_view()),
     path("ads/<pk>/delete/", AdDeleteView.as_view()),

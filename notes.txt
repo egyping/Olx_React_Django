@@ -77,3 +77,13 @@ job create
 
 create the form using formik 
 npm install formik
+
+Setup authentication for react 
+    create two folders services and contexts 
+    authentication.js > services
+    AuthContext.js > contexts
+
+    import AuthContextProvider at app.js and add it to thr return 
+    Login.js has the login form 
+    we can copy from create add and change to the username and password 
+    adjust the app.js to add login page and login component

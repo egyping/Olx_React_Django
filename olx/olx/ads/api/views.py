@@ -1,5 +1,6 @@
 from rest_framework.generics import ListAPIView, CreateAPIView, UpdateAPIView, DestroyAPIView, RetrieveAPIView
 from olx.ads.models import Ad
+from rest_framework import generics
 from .serializers import AdSerializer
 # axios
 from rest_framework.permissions import IsAuthenticated, AllowAny
@@ -12,9 +13,9 @@ class AdListView(ListAPIView):
         # return Ad.objects.all()
         return Ad.objects.filter(available=True)
 
-
+#class AdCreateView(generics.ListCreateAPIView):
 class AdCreateView(CreateAPIView):
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
     serializer_class = AdSerializer
 
     # User <> Ad

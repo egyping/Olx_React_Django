@@ -5,6 +5,7 @@ import axios from 'axios';
 const BASE_URL = 'http://127.0.0.1:8000/api';
 
 export default function AdCreate(props) {
+  
   const formik = useFormik({
     initialValues: {
       title: '',
@@ -14,6 +15,7 @@ export default function AdCreate(props) {
       seller: '',
       available: true,
       logo: null,
+      user:'admin',
     },
     onSubmit: (values) => {
       console.log(values)
@@ -24,20 +26,25 @@ export default function AdCreate(props) {
 
       axios
         .post(`${BASE_URL}/ads/create-ad/`, formData)
-        .then(() => {
-          props.history.push('/');
+        .then(res => {
+          console.log(res.data)
         });
     },
+
+    
   });
 
   const handleFileChange = (event) => {
     formik.setFieldValue('logo', event.target.files[0]);
   };
 
+ 
+  
   return (
     <div>
       <h1>Create Ad</h1>
       <form onSubmit={formik.handleSubmit}>
+
         <label htmlFor="title">Title:</label>
         <input
           id="title"
@@ -103,6 +110,12 @@ export default function AdCreate(props) {
           onChange={handleFileChange}
         />
 
+        {/* <input
+          type="hidden"
+          name="user"
+          value={formik.values.user}
+        /> */}
+        
         <button type="submit">Submit</button>
       </form>
     </div>
