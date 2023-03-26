@@ -5,12 +5,12 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link
 } from "react-router-dom"
 import AdCreate from "./components/AdCreate";
 import AdDetails from "./components/AdDetails";
 import { AdList } from "./components/AdList";
 import Login from "./components/Login";
+import Navbar from "./components/Navbar";
 import {AuthContextProvider} from "./contexts/AuthContexts"
 
 
@@ -20,25 +20,7 @@ export default function App() {
     <Router>
       <AuthContextProvider>
       <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>
-              <Link to="/create-ad">Create new Ad</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
-            </li>
-          </ul>
-        </nav>
+        <Navbar />
 
         <Routes>
           <Route path="/about" element={<About/>} />

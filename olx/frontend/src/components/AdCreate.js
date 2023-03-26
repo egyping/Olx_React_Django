@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useFormik } from 'formik';
 import axios from 'axios';
+import { AuthContext } from '../contexts/AuthContexts';
 
 const BASE_URL = 'http://127.0.0.1:8000/api';
 
 export default function AdCreate(props) {
-  
+  const { user: {token} } = useContext(AuthContext)
   const formik = useFormik({
     initialValues: {
       title: '',
@@ -19,13 +20,18 @@ export default function AdCreate(props) {
     },
     onSubmit: (values) => {
       console.log(values)
+
       const formData = new FormData();
+      
       Object.entries(values).forEach(([key, value]) => {
         formData.append(key, value);
       });
 
-      axios
-        .post(`${BASE_URL}/ads/create-ad/`, formData)
+      axios.post(`${BASE_URL}/ads/create-ad/`, formData, {
+          headers: {
+            "Authorization": 'Token ${token}',
+          }
+        })
         .then(res => {
           console.log(res.data)
         });
